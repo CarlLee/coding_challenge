@@ -1,2 +1,5 @@
-# coding_challenge
-A coding challenge temporary repository
+# Directories
+
+- /backend The backend challenge
+- /frontend The frontend challenge
+

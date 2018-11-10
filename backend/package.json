@@ -1,0 +1,24 @@
+{
+  "name": "coding_challenge",
+  "version": "1.0.0",
+  "description": "A coding challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CarlLee/coding_challenge.git"
+  },
+  "author": "Carl Lee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CarlLee/coding_challenge/issues"
+  },
+  "homepage": "https://github.com/CarlLee/coding_challenge#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
+  }
+}
