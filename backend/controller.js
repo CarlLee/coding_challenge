@@ -3,8 +3,9 @@ const isEmail = require('./utils').isEmail
 const splitArray = require('./utils').splitArray
 const validateEmailArray = require('./utils').validateEmailArray
 const errors = require('./errors')
+const mailProviderService = require('./mail_providers')
 
-const controller = function(req, res, next) {
+const controller = async function(req, res, next) {
     let body = req.body
     let fromNames = splitArray(body.fromname)
     let toNames = splitArray(body.toname)
@@ -79,10 +80,37 @@ const controller = function(req, res, next) {
         return
     }
 
-    res.json({
-        code: 0,
-        msg: 'success'
-    })
+    let attachments = req.files
+
+    let result
+    try {
+        result = await mailProviderService.sendMail({
+            fromEmails, 
+            fromNames, 
+            toEmails, 
+            toNames, 
+            subject,
+            text, 
+            html, 
+            ccEmails, 
+            ccNames, 
+            bccNames, 
+            bccEmails, 
+            attachments
+        })
+    } catch(error) {
+        console.error("MailProviderService failed with error", error)
+        errors.serverError(res)
+        return
+    }
+
+    if(result) {
+        res.json({
+            code: 0,
+            msg: 'success'
+        })
+    }
+
 }
 
 module.exports = controller
