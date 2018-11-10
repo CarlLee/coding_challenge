@@ -10,6 +10,7 @@ class MailProviderService {
         this.timeout = options.timeout || 10000;
     }
 
+    // Returns true when sending succeed
     async sendMail(mail) {
         let result
         try {

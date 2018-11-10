@@ -1,9 +1,15 @@
+# Environment Variables
+
+PORT: The port this service is going to use
+SENDGRID_API_key: API key from SendGrid
+MAILGUN_DOMAIN: Mailgun subdomain
+MAILGUN_API_KEY: API Key from Mailgun
+
 # Run
 
 ```
 export PORT=80
 export UPLOAD_PATH=/tmp/
-export SENDGRID_API_USER='xxxx'
 export SENDGRID_API_KEY='xxx'
 export MAILGUN_DOMAIN='xxx'
 export MAILGUN_API_KEY='xxx'
