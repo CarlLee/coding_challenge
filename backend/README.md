@@ -2,6 +2,7 @@
 
 ```
 export PORT=80
+export UPLOAD_PATH=/tmp/
 node install
 node index.js > log 2>&1 &
 ```
@@ -14,6 +15,7 @@ POST /schedule
 * Types of `string[]` is an array of string values divided by comma `,`
 * Attachments should be sent using multipart/form-data
 * Attachments should be at most 7MB each
+* At most 10 attachments are allowed
 
 Parameters:
 
@@ -29,4 +31,4 @@ Parameters:
 - bcc(string[]): Email address(es) of blind carbon copy recipients
 - bccname(string[]): Name(s) of blind carbon copy recipients
 - attachments(files[]): File(s) to be sent
-- deliverytime(long): unix timestamp at which mails should be sent
+- deliverytime(long): UNIX timestamp at which the mail should be sent

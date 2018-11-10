@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/CarlLee/coding_challenge#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "multer": "^1.4.1",
     "request": "^2.88.0",
     "request-promise": "^4.2.2"
   }
