@@ -15,7 +15,7 @@ class MailProviderService {
         try {
             result = await this.mainProvider.sendMail(mail, this.timeout)
         } catch (err) {
-            console.error('Main provider failed with exception: ' + err)
+            console.error('Main provider failed with exception: ', err)
             console.error('Switching to failover provider')
 
             try {
@@ -36,5 +36,8 @@ module.exports = new MailProviderService({
         domain: process.env.MAILGUN_DOMAIN,
         apiKey: process.env.MAILGUN_API_KEY
     }),
-    failoverProvider: new SendGridProvider()
+    failoverProvider: new SendGridProvider({
+        apiUser: process.env.SENDGRID_API_USER,
+        apiKey: process.env.SENDGRID_API_KEY
+    })
 })

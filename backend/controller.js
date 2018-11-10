@@ -7,12 +7,18 @@ const mailProviderService = require('./mail_providers')
 
 const controller = async function(req, res, next) {
     let body = req.body
-    let fromNames = splitArray(body.fromname)
+    let fromName = body.fromname
     let toNames = splitArray(body.toname)
     let text = body.text
     let html = body.html
     let ccNames = splitArray(body.ccname)
     let bccNames = splitArray(body.bccname)
+    let deliveryTime = body.deliverytime
+
+    // parse delivery time
+    if(deliveryTime != undefined) {
+        deliveryTime = parseInt(deliveryTime)
+    }
 
     // content validation
     if(isEmpty(text) && isEmpty(html)) {
@@ -32,13 +38,9 @@ const controller = async function(req, res, next) {
         errors.requiredMissing(res, 'from')
         return
     }
-    let fromEmails = splitArray(from)
-    if(!validateEmailArray(fromEmails)) {
+    let fromEmail = from
+    if(!isEmail(fromEmail)) {
         errors.invalidEmail(res, 'from')
-        return
-    }
-    if(fromNames != undefined && fromNames.length != fromEmails.length) {
-        errors.arrayLengthUnmached(res, 'from', 'fromname')
         return
     }
 
@@ -85,8 +87,8 @@ const controller = async function(req, res, next) {
     let result
     try {
         result = await mailProviderService.sendMail({
-            fromEmails, 
-            fromNames, 
+            fromEmail, 
+            fromName, 
             toEmails, 
             toNames, 
             subject,
@@ -96,7 +98,8 @@ const controller = async function(req, res, next) {
             ccNames, 
             bccNames, 
             bccEmails, 
-            attachments
+            attachments,
+            deliveryTime
         })
     } catch(error) {
         console.error("MailProviderService failed with error", error)

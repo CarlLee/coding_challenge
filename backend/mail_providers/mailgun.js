@@ -12,7 +12,7 @@ class MailGunProvider {
 
     async sendMail(mail, timeout) {
         timeout = timeout || 10000;
-        let from = this.assembleAddresses(mail.fromNames, mail.fromEmails)
+        let from = this.assembleAddress(mail.fromName, mail.fromEmail)
         let to = this.assembleAddresses(mail.toNames, mail.toEmails)
         let cc = mail.cc == undefined ? undefined : this.assembleAddresses(mail.ccNames, mail.ccEmails)
         let bcc = mail.bcc == undefined ? undefined : this.assembleAddresses(mail.bccNames, mail.bccEmails)
@@ -20,9 +20,10 @@ class MailGunProvider {
         let text = mail.text
         let html = mail.html
         let attachments = mail.attachments
+        let deliveryTime = mail.deliveryTime
 
         let formData = new FormData()
-        formData.append('from', from.join(','))
+        formData.append('from', from)
         formData.append('to', to.join(','))
         formData.append('subject', subject)
         if(text != undefined) {
@@ -48,6 +49,9 @@ class MailGunProvider {
                     knownLength: file.size
                 })
             })
+        }
+        if(deliveryTime != undefined) {
+            formData.append('o:deliverytime', new Date(deliveryTime).toUTCString())
         }
 
         let result
