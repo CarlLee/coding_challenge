@@ -11,10 +11,10 @@ const upload = multer({
 })
 const port = process.env.PORT || 3000
 
-const controller = require('controller')
+const controller = require('./controller')
 
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.get('/schedule', upload.array(), controller)
+app.post('/schedule', upload.array('attachments'), controller)
 
 app.listen(port, () => console.log(`Listening on port ${port}!`))
