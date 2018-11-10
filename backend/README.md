@@ -1,6 +1,7 @@
 # Run
 
-``
+```
 export PORT=80
-node index.js&
-``
+node install
+node index.js > log 2>&1 &
+```
