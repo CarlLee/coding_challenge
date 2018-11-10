@@ -1,9 +1,9 @@
 # Environment Variables
 
-PORT: The port this service is going to use
-SENDGRID_API_key: API key from SendGrid
-MAILGUN_DOMAIN: Mailgun subdomain
-MAILGUN_API_KEY: API Key from Mailgun
+- PORT: The port this service is going to use
+- SENDGRID_API_key: API key from SendGrid
+- MAILGUN_DOMAIN: Mailgun subdomain
+- MAILGUN_API_KEY: API Key from Mailgun
 
 # Run
 
