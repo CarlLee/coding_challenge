@@ -13,7 +13,7 @@ export UPLOAD_PATH=/tmp/
 export SENDGRID_API_KEY='xxx'
 export MAILGUN_DOMAIN='xxx'
 export MAILGUN_API_KEY='xxx'
-node install
+npm install
 node index.js > log 2>&1 &
 ```
 
