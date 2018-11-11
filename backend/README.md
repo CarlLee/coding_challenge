@@ -42,3 +42,10 @@ Parameters:
 - bccname(string[]): Name(s) of blind carbon copy recipients
 - attachments(files[]): File(s) to be sent
 - deliverytime(long): UNIX timestamp at which the mail should be sent
+
+# Security Consideration
+
+This service should not be used without any authentication measure. The proper way to add autentication in this case in production is using a privately signed certificate for HTTPS communication. Only certificates from the same private CA as the one the server is using can be authenticated. This way authentication is done both way (both client and server).
+
+A simpler way is using a preshared password as a token, this is the easiest way to implement.
+
