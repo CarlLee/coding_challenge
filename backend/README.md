@@ -47,5 +47,5 @@ Parameters:
 
 This service should not be used without any authentication measure. The proper way to add autentication in this case in production is using a privately signed certificate for HTTPS communication. Only certificates from the same private CA as the one the server is using can be authenticated. This way authentication is done both way (both client and server).
 
-A simpler way is using a preshared password as a token, this is the easiest way to implement.
+A simpler way is using a preshared password as a token, this is the easiest way to implement, but it has the potential of being hijacked by simple packet sniffing. It's recommended to be used along with HTTPS.
 
