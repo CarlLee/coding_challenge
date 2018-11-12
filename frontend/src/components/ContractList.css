@@ -1,0 +1,24 @@
+.table {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    border-top: 1px #ccc solid;
+    border-bottom: 1px #ccc solid;
+}
+
+.table > *:nth-child(even) {
+    background-color: whitesmoke;
+}
+
+.row {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+.row > * {
+    flex: 1 1;
+    border-right: 1px #ccc solid;
+    vertical-align: top;
+    padding: 5px 10px;
+}

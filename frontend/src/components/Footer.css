@@ -1,0 +1,12 @@
+.Footer {
+    display: table;
+    margin: auto;
+}
+
+.Footer form {
+    display: inline;
+}
+
+.Footer input[type=text] {
+    width: 3em;
+}
