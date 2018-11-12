@@ -23,7 +23,13 @@ class App extends Component {
   }
 
   deleteContract(contract) {
-
+    let that = this
+    fetch(`http://localhost:8000/contracts/${contract.id}`, {
+        method: 'DELETE'
+      }).then(res => res.json())
+      .then(function(result){
+        that.fetchContracts()
+      })
   }
 
   navigateToPage(page) {
