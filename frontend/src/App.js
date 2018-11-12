@@ -16,6 +16,7 @@ class App extends Component {
     this.navigateToPrev = this.navigateToPrev.bind(this)
     this.fetchContracts = this.fetchContracts.bind(this)
     this.deleteContract = this.deleteContract.bind(this)
+    this.updateContract = this.updateContract.bind(this)
   }
 
   componentDidMount() {
@@ -28,6 +29,20 @@ class App extends Component {
         method: 'DELETE'
       }).then(res => res.json())
       .then(function(result){
+        that.fetchContracts()
+      })
+  }
+
+  updateContract(contract) {
+    let that = this
+    console.log(contract)
+    fetch(`http://localhost:8000/contracts/${contract.id}`, {
+        method: 'PATCH',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(contract)
+      }).then(res => res.json())
+      .then(function(result){
+        console.log(result)
         that.fetchContracts()
       })
   }
@@ -66,7 +81,8 @@ class App extends Component {
       <div className="App">
         <ContractList
           contracts={this.state.contracts}
-          deleteContract={this.deleteContract} />
+          deleteContract={this.deleteContract}
+          updateContract={this.updateContract} />
         <Footer
           navigateToFirst={this.navigateToFirst}
           navigateToPrev={this.navigateToPrev}
@@ -74,7 +90,7 @@ class App extends Component {
           navigateToNext={this.navigateToNext}
           page={this.state.page} />
       </div>
-    );
+    )
   }
 }
 

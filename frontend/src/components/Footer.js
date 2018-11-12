@@ -41,7 +41,7 @@ class Footer extends Component {
         <form onSubmit={this.onFormSubmit}><input type="text" value={this.state.page} onChange={this.onPageChange} /></form>
         <button onClick={this.props.navigateToNext}>Next</button>
       </div>
-    );
+    )
   }
 }
 

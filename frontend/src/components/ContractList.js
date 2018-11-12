@@ -22,7 +22,7 @@ class ContractList extends Component {
         </div>
         {contracts}
       </div>
-    );
+    )
   }
 }
 
