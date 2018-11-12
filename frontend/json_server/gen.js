@@ -6,12 +6,13 @@ let output = {
 }
 for(let i = 0; i < 100; i++) {
     let json = {
+        id: i,
         user: {
             name: randomArrayElement(names),
             surname: randomArrayElement(surNames)
         },
-        amountInUsd: (Math.random() * 10000).toPrecision(2),
-        currency: 'ETH' + (Math.random() * 10000).toPrecision(2),
+        amountInUsd: (Math.random() * 10000).toFixed(2),
+        currency: 'ETH' + (Math.random() * 10000).toFixed(2),
         date: new Date().toUTCString()
     }
     output.contracts.push(json)

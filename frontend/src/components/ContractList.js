@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
+import Contract from './Contract'
 import './ContractList.css';
 
 class ContractList extends Component {
   render() {
-    let contracts = this.props.contracts
+    let contracts = this.props.contracts.map((contract) => <Contract key={contract.id} contract={contract}/>)
     return (
       <div className="ContractList">
-        <div>Price: ${contract.amoundInUsd}</div>
-        <div>Currency: {contract.currency}</div>
-        <div>User: {contract.user.name} {contract.user.surname}</div>
-        <div>Date: {contract.date}</div>
+        {contracts}
       </div>
     );
   }
